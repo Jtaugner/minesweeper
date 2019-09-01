@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Сапёр</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сапёр">
+    <meta name="theme-color" content="white">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(55146370, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/55146370" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <link rel="shortcut icon" href="images/bomb.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="reset.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+</head>
+<body translate="no">
+<div class="content">
+    <div class="settings">
+        <label for="boardWidth" class="boardWidth">Ширина: 10</label>
+        <input id="boardWidth" type="range" value="10" min="4" max="40">
+        <label for="boardHeight" class="boardHeight">Высота: 10</label>
+        <input id="boardHeight" type="range" value="10" min="4" max="40">
+        <div class="complexity">
+            <input type="radio" id="easy" name="difficulty" value="0.1" class="difficulty"
+                   onclick="params({'Легко': 1});">
+            <label for="easy">Легко</label>
+            <input type="radio" id="normal" name="difficulty" value="0.25" class="difficulty" checked
+                   onclick="params({'Нормально': 1});">
+            <label for="normal">Нормально</label>
+            <input type="radio" id="hard" name="difficulty" value="0.45" class="difficulty"
+                   onclick="params({'Сложно': 1});">
+            <label for="hard">Сложно</label>
+        </div>
+        <button class="game">Новая игра</button>
+    </div>
+    <div class="pds"></div>
+    <div class="endscreen"></div>
+    <div class="bombs">Количество мин неизвестно... </div>
+    <table class="board"></table>
+</div>
+<script src="index.js"></script>
+<script src="sw.js" type="text/javascript"></script>
+<script>
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker
+            .register('sw.js')
+            .then(function(reg) {
+                console.log('Registration succeeded. Scope is ' + reg.scope);
+            })
+            .catch(function(error) {
+                console.error('Trouble with sw: ', error);
+            });
+    }
+</script>
+</body>
+</html>
